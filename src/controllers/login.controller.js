@@ -6,6 +6,9 @@ import {
   UnauthorizedError,
   ValidationError,
 } from "../utils/ApiError";
+import User from "../models/User.js"; // Added .js
+import JwtService from "../services/jwt.service.js"; // Added .js
+import { BadRequestError, UnauthorizedError, ValidationError } from "../utils/ApiError.js"; // Added .js
 
 let loginController = {
   login: async (req, res, next) => {

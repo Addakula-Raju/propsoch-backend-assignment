@@ -6,6 +6,9 @@ import {
   UnauthorizedError,
   ValidationError,
 } from "../utils/ApiError";
+import Address from "../models/Address.js"; // Added .js
+import User from "../models/User.js"; // Added .js
+import { BadRequestError, UnauthorizedError, ValidationError } from "../utils/ApiError.js"; // Added .js
 
 //Yup is a JavaScript schema builder for value parsing and validation.
 

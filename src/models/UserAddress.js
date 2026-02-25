@@ -1,25 +1,34 @@
-import Sequelize, { Model } from "sequelize";
+import { DataTypes, Model } from "sequelize";
 
 class UserAddress extends Model {
   static init(sequelize) {
-    super.init(
+    return super.init(
       {
-        userId: Sequelize.INTEGER,
-        addressId: Sequelize.INTEGER,
+        userId: {
+          type: DataTypes.INTEGER,
+          references: {
+            model: "Users",
+            key: "id",
+          },
+        },
+        addressId: {
+          type: DataTypes.INTEGER,
+          references: {
+            model: "Addresses",
+            key: "id",
+          },
+        },
       },
       {
         sequelize,
-        timestamps: true,
-        tableName: "UserAddress"
+        modelName: "UserAddress",
+        tableName: "UserAddress",
       }
     );
-
-    return this;
   }
 
   static associate(models) {
-    this.belongsTo(models.User, { foreignKey: "userId" });
-    this.belongsTo(models.Address, { foreignKey: "addressId" });
+    // future many-to-many logic
   }
 }
 

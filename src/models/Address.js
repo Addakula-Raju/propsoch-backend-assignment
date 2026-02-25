@@ -1,28 +1,24 @@
-import Sequelize, { Model } from "sequelize";
+import { DataTypes, Model } from "sequelize";
 
 class Address extends Model {
   static init(sequelize) {
-    super.init(
+    return super.init(
       {
-        city: Sequelize.STRING,
-        state: Sequelize.STRING,
-        neighborhood: Sequelize.STRING,
-        country: Sequelize.STRING,
+        city: DataTypes.STRING,
+        state: DataTypes.STRING,
+        neighborhood: DataTypes.STRING,
+        country: DataTypes.STRING,
       },
       {
         sequelize,
-        timestamps: true,
+        modelName: "Address",
+        tableName: "Addresses",
       }
     );
-
-    return this;
   }
 
   static associate(models) {
-    this.belongsToMany(models.User, {
-      through: "UserAddress",
-      foreignKey: "addressId",
-    });
+    // associations later
   }
 }
 
